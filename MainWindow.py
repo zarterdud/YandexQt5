@@ -24,8 +24,6 @@ class Window(QtWidgets.QMainWindow):
         strans2 = ""
 
         if "Введите корректное значение" not in ans:
-            # for i in ans:
-            #     a += ''.join(*i) + '\n'
             self.w.labelname.setText("".join(*ans[0]))
         else:
             self.w.labelname.setText(ans)
@@ -33,8 +31,6 @@ class Window(QtWidgets.QMainWindow):
             for i in ans2:
                 strans2 += "".join(*i) + "\n"
             self.w.labelnameN.setText(strans2)
-            # for i in ans2:
-            #     self.w.labelnameN.setText(*i)
         else:
             self.w.labelnameN.setText(ans2)
 
