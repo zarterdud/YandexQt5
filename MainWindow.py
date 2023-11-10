@@ -1,3 +1,4 @@
+import difflib
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_Mainwindow import *
@@ -15,6 +16,15 @@ class Window(QtWidgets.QMainWindow):
         self.check_db = CheckThread()
 
         self.w.pushButtonSearch.clicked.connect(self.search)
+
+    # def paradox(self):
+    #     str = self.w.search.text()
+
+    #     y = difflib.SequenceMatcher(None, str1.lower(), str2.lower()).ratio() * 100
+    #     if float(a) >= y:
+    #         self.statusBar().showMessage(f"Тексты похожи на {y:.2f}%, не плагиат")
+    #     else:
+    #         self.statusBar().showMessage(f"Тексты похожи на {y:.2f}%, плагиат")
 
     def search(self):
         name = self.w.search.text()

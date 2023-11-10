@@ -42,7 +42,12 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Authorization"))
-        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">Здравствуйте!</span></p><p align=\"center\"><span style=\" font-size:12pt;\">Зарегестрируйтесь или авторизуйтесь в системе</span></p></body></html>"))
+        self.label.setText(
+            _translate(
+                "Form",
+                '<html><head/><body><p align="center"><span style=" font-size:12pt;">Здравствуйте!</span></p><p align="center"><span style=" font-size:12pt;">Зарегестрируйтесь или авторизуйтесь в системе</span></p></body></html>',
+            )
+        )
         self.lineEdit.setPlaceholderText(_translate("Form", "Login.."))
         self.lineEdit_2.setPlaceholderText(_translate("Form", "Password.."))
         self.pushButton_2.setText(_translate("Form", "Sign in"))

@@ -50,7 +50,6 @@ class RegLog(QtWidgets.QWidget):
 
         if self.check_db.thr_register(name, passw):
             self.win.show()
-            self.ui.close()
 
 
 if __name__ == "__main__":
