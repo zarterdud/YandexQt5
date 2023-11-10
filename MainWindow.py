@@ -21,20 +21,18 @@ class Window(QtWidgets.QMainWindow):
 
         ans = self.check_db.thr_products(name)
         ans2 = self.check_db.thr_analogue(name)
-        a = ''
+        strans2 = ""
 
-        # self.w.labelname.setText(self.check_db.thr_products(name))
-        # self.w.labelnameN.setText(self.check_db.thr_analogue(name))
         if "Введите корректное значение" not in ans:
             # for i in ans:
             #     a += ''.join(*i) + '\n'
-            self.w.labelname.setText(''.join(*ans[0]))
+            self.w.labelname.setText("".join(*ans[0]))
         else:
             self.w.labelname.setText(ans)
         if "Не найдено" not in ans2:
             for i in ans2:
-                a += ''.join(*i) + '\n'
-            self.w.labelnameN.setText(a)
+                strans2 += "".join(*i) + "\n"
+            self.w.labelnameN.setText(strans2)
             # for i in ans2:
             #     self.w.labelnameN.setText(*i)
         else:
