@@ -1,10 +1,7 @@
-import difflib
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_Mainwindow import *
 from check_db import *
-
-# import sqlite3
 
 
 class Window(QtWidgets.QMainWindow):
@@ -17,15 +14,6 @@ class Window(QtWidgets.QMainWindow):
 
         self.w.pushButtonSearch.clicked.connect(self.search)
 
-    # def paradox(self):
-    #     str = self.w.search.text()
-
-    #     y = difflib.SequenceMatcher(None, str1.lower(), str2.lower()).ratio() * 100
-    #     if float(a) >= y:
-    #         self.statusBar().showMessage(f"Тексты похожи на {y:.2f}%, не плагиат")
-    #     else:
-    #         self.statusBar().showMessage(f"Тексты похожи на {y:.2f}%, плагиат")
-
     def search(self):
         name = self.w.search.text()
 
@@ -33,10 +21,19 @@ class Window(QtWidgets.QMainWindow):
         ans2 = self.check_db.thr_analogue(name)
         strans2 = ""
 
-        if "Введите корректное значение" not in ans:
-            self.w.labelname.setText("".join(*ans[0]))
+        if "Введите корректно" not in ans:
+            self.w.labelname.setText(*ans[0])
+            self.w.similar_name.setText('')
         else:
             self.w.labelname.setText(ans)
+
+            if self.check_db.thr_check_name(name) != None:
+                self.w.similar_name.setText(
+                    f"Может вы имели ввиду: {self.check_db.thr_check_name(name)}"
+                )
+            else:
+                self.w.similar_name.setText('')
+
         if "Не найдено" not in ans2:
             for i in ans2:
                 strans2 += "".join(*i) + "\n"

@@ -81,7 +81,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Выборка</string>
     </property>
     <widget class="QCheckBox" name="fastfood">
      <property name="geometry">
@@ -127,7 +127,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>100</y>
+      <y>130</y>
       <width>131</width>
       <height>111</height>
      </rect>
@@ -140,7 +140,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>60</y>
+      <y>90</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -153,7 +153,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>60</y>
+      <y>90</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -166,13 +166,29 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>100</y>
+      <y>130</y>
       <width>131</width>
       <height>111</height>
      </rect>
     </property>
     <property name="text">
      <string>Тут будет похожий</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="similar_name">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>60</y>
+      <width>371</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

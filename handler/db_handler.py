@@ -1,4 +1,5 @@
 import sqlite3
+import difflib
 
 
 def login(login, passw, signal):
@@ -56,7 +57,7 @@ def products(name):
     if value != []:
         return value
     else:
-        return "Введите корректное\nзначение"
+        return "Введите корректно"
 
 
 def analogue(name):
@@ -69,3 +70,16 @@ def analogue(name):
         return value
     else:
         return "Не найдено"
+
+
+def check(name):
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+
+    cur.execute(f"SELECT name FROM products")
+    value = cur.fetchall()
+    for i in value:
+        y = difflib.SequenceMatcher(None, name.lower(), ''.join(*i).lower()).ratio() * 100
+        if y > 75:
+            return ''.join(*i)
+    return None

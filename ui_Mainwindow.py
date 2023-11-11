@@ -43,17 +43,21 @@ class Ui_MainWindow(object):
         self.forchildren.setGeometry(QtCore.QRect(10, 90, 91, 20))
         self.forchildren.setObjectName("forchildren")
         self.labelname = QtWidgets.QLabel(self.centralwidget)
-        self.labelname.setGeometry(QtCore.QRect(150, 100, 131, 111))
+        self.labelname.setGeometry(QtCore.QRect(150, 130, 131, 111))
         self.labelname.setObjectName("labelname")
         self.name = QtWidgets.QLabel(self.centralwidget)
-        self.name.setGeometry(QtCore.QRect(150, 60, 101, 21))
+        self.name.setGeometry(QtCore.QRect(150, 90, 101, 21))
         self.name.setObjectName("name")
         self.nameN = QtWidgets.QLabel(self.centralwidget)
-        self.nameN.setGeometry(QtCore.QRect(320, 60, 91, 21))
+        self.nameN.setGeometry(QtCore.QRect(320, 90, 91, 21))
         self.nameN.setObjectName("nameN")
         self.labelnameN = QtWidgets.QLabel(self.centralwidget)
-        self.labelnameN.setGeometry(QtCore.QRect(310, 100, 131, 111))
+        self.labelnameN.setGeometry(QtCore.QRect(310, 130, 131, 111))
         self.labelnameN.setObjectName("labelnameN")
+        self.similar_name = QtWidgets.QLabel(self.centralwidget)
+        self.similar_name.setGeometry(QtCore.QRect(150, 60, 371, 21))
+        self.similar_name.setMouseTracking(False)
+        self.similar_name.setObjectName("similar_name")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
@@ -87,42 +91,23 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.plainTextEdit.setPlainText(
-            _translate(
-                "MainWindow",
-                "Фильтры\n"
-                "Состав\n"
-                "Озывы\n"
-                "Цена\n"
-                "Разделы\n"
-                "Персонализация(из анкеты)",
-            )
-        )
-        self.filter.setText(
-            _translate(
-                "MainWindow",
-                '<html><head/><body><p><span style=" font-size:10pt; font-weight:600;">Фильтр</span></p></body></html>',
-            )
-        )
+        self.plainTextEdit.setPlainText(_translate("MainWindow", "Фильтры\n"
+"Состав\n"
+"Озывы\n"
+"Цена\n"
+"Разделы\n"
+"Персонализация(из анкеты)"))
+        self.filter.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Фильтр</span></p></body></html>"))
         self.pushButtonSearch.setText(_translate("MainWindow", "Искать продукты"))
-        self.groupBox.setTitle(_translate("MainWindow", "GroupBox"))
+        self.groupBox.setTitle(_translate("MainWindow", "Выборка"))
         self.fastfood.setText(_translate("MainWindow", "Фастфуд"))
         self.meat.setText(_translate("MainWindow", "Мясо, птица"))
         self.forchildren.setText(_translate("MainWindow", "Для детей"))
         self.labelname.setText(_translate("MainWindow", "Тут будет название"))
-        self.name.setText(
-            _translate(
-                "MainWindow",
-                '<html><head/><body><p><span style=" font-size:10pt; font-weight:600;">Назавание</span></p></body></html>',
-            )
-        )
-        self.nameN.setText(
-            _translate(
-                "MainWindow",
-                '<html><head/><body><p><span style=" font-size:10pt; font-weight:600;">Похожие</span></p></body></html>',
-            )
-        )
+        self.name.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Назавание</span></p></body></html>"))
+        self.nameN.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Похожие</span></p></body></html>"))
         self.labelnameN.setText(_translate("MainWindow", "Тут будет похожий"))
+        self.similar_name.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.menu_2.setTitle(_translate("MainWindow", "Заказы"))
         self.menu_3.setTitle(_translate("MainWindow", "Корзина"))
         self.menu.setTitle(_translate("MainWindow", "Главная"))

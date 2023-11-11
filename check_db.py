@@ -18,3 +18,6 @@ class CheckThread(QtCore.QThread):
 
     def thr_analogue(self, name):
         return analogue(name)
+
+    def thr_check_name(self, name):
+        return check(name)
