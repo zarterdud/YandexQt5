@@ -1,16 +1,23 @@
 import sqlite3
 import difflib
+import hashlib
+import os
+import hashlib
 
 
 def login(login, passw, signal):
     con = sqlite3.connect("handler/users.sqlite")
     cur = con.cursor()
 
-    # Проверяем есть ли такой пользователь
-    cur.execute(f'SELECT * FROM users WHERE name="{login}";')
-    value = cur.fetchall()
+    salt = cur.execute(f'SELECT salt FROM users WHERE name="{login}";').fetchall()
+    password = cur.execute(
+        f'SELECT password FROM users WHERE name="{login}";'
+    ).fetchall()
+    new_key = hashlib.pbkdf2_hmac(
+        "sha1", passw.encode("utf-8"), bytes(salt[0][0], "utf-8"), 100000
+    ).hex()
 
-    if value != [] and value[0][2] == passw:
+    if new_key != [] and new_key == password[0][0]:
         signal.emit("Успешная авторизация!")
         cur.close()
         con.close()
@@ -21,16 +28,19 @@ def login(login, passw, signal):
         con.close()
         return False
 
-    # cur.close()
-    # con.close()
-
 
 def register(login, passw, signal):
+    salt = os.urandom(32)
+    salt = salt.hex()
+    key = hashlib.pbkdf2_hmac(
+        "sha1", passw.encode("utf-8"), bytes(salt, "utf-8"), 100000
+    ).hex()
+
     con = sqlite3.connect("handler/users.sqlite")
     cur = con.cursor()
 
     # Регистрируем пользователя
-    cur.execute(f'SELECT * FROM users WHERE name="{login}";')
+    cur.execute(f'SELECT name FROM users WHERE name="{login}";')
     value = cur.fetchall()
 
     # Проверяем на наличие пользователя в базе данных
@@ -40,7 +50,9 @@ def register(login, passw, signal):
         con.close()
         return False
     elif value == []:
-        cur.execute(f"INSERT INTO users (name, password) VALUES ('{login}', '{passw}')")
+        cur.execute(
+            f"INSERT INTO users (name, password, salt) VALUES ('{login}', '{key}', '{salt}')"
+        )
         signal.emit("Вы успешно зарегистрированы!")
         con.commit()
         cur.close()
@@ -79,7 +91,18 @@ def check(name):
     cur.execute(f"SELECT name FROM products")
     value = cur.fetchall()
     for i in value:
-        y = difflib.SequenceMatcher(None, name.lower(), ''.join(*i).lower()).ratio() * 100
+        y = (
+            difflib.SequenceMatcher(None, name.lower(), "".join(*i).lower()).ratio()
+            * 100
+        )
         if y > 75:
-            return ''.join(*i)
+            return "".join(*i)
     return None
+
+
+def struck(name):
+    pass
+
+
+def price(name):
+    pass

@@ -21,3 +21,9 @@ class CheckThread(QtCore.QThread):
 
     def thr_check_name(self, name):
         return check(name)
+
+    def thr_struck(self, name):
+        return struck(name)
+
+    def thr_price(self, name):
+        return price(name)

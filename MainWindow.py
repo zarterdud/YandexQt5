@@ -14,8 +14,14 @@ class Window(QtWidgets.QMainWindow):
 
         self.w.pushButtonSearch.clicked.connect(self.search)
 
+        self.w.strukture.clicked.connect(self.struk)
+
+        self.w.prise_value.clicked.connect(self.price)
+
+        self.w.popular.setEnabled(False)
+
     def search(self):
-        name = self.w.search.text()
+        name = self.w.search.text().lower()
 
         ans = self.check_db.thr_products(name)
         ans2 = self.check_db.thr_analogue(name)
@@ -23,7 +29,7 @@ class Window(QtWidgets.QMainWindow):
 
         if "Введите корректно" not in ans:
             self.w.labelname.setText(*ans[0])
-            self.w.similar_name.setText('')
+            self.w.similar_name.setText("")
         else:
             self.w.labelname.setText(ans)
 
@@ -32,7 +38,7 @@ class Window(QtWidgets.QMainWindow):
                     f"Может вы имели ввиду: {self.check_db.thr_check_name(name)}"
                 )
             else:
-                self.w.similar_name.setText('')
+                self.w.similar_name.setText("")
 
         if "Не найдено" not in ans2:
             for i in ans2:
@@ -40,6 +46,13 @@ class Window(QtWidgets.QMainWindow):
             self.w.labelnameN.setText(strans2)
         else:
             self.w.labelnameN.setText(ans2)
+            return ans2
+
+    def struk(self):
+        pass
+
+    def price(self):
+        pass
 
 
 if __name__ == "__main__":

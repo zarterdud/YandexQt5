@@ -32,19 +32,6 @@
 Персонализация(из анкеты)</string>
     </property>
    </widget>
-   <widget class="QLabel" name="filter">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Фильтр&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="search">
     <property name="geometry">
      <rect>
@@ -81,7 +68,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Выборка</string>
+     <string>Фильтры</string>
     </property>
     <widget class="QCheckBox" name="fastfood">
      <property name="geometry">
@@ -127,9 +114,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>130</y>
+      <y>140</y>
       <width>131</width>
-      <height>111</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -167,28 +154,77 @@
      <rect>
       <x>310</x>
       <y>130</y>
-      <width>131</width>
-      <height>111</height>
+      <width>151</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Тут будет похожий</string>
+     <string>Тут будут похожие</string>
     </property>
    </widget>
    <widget class="QLabel" name="similar_name">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>20</x>
       <y>60</y>
       <width>371</width>
       <height>21</height>
      </rect>
     </property>
     <property name="mouseTracking">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="popular_lable">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>220</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Популярные&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="strukture">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>100</y>
+      <width>101</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Узнать состав</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="prise_value">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>140</y>
+      <width>101</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Узнать цену</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="popular">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>260</y>
+      <width>311</width>
+      <height>151</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -217,8 +253,6 @@
     <property name="title">
      <string>Главная</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
