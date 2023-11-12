@@ -14,12 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 538)
+        MainWindow.resize(804, 522)
+        MainWindow.setFixedSize(640, 480)
+        MainWindow.setMinimumSize(QtCore.QSize(804, 522))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(560, 310, 201, 111))
-        self.plainTextEdit.setObjectName("plainTextEdit")
         self.search = QtWidgets.QLineEdit(self.centralwidget)
         self.search.setGeometry(QtCore.QRect(20, 20, 551, 22))
         self.search.setObjectName("search")
@@ -58,18 +57,15 @@ class Ui_MainWindow(object):
         self.popular_lable = QtWidgets.QLabel(self.centralwidget)
         self.popular_lable.setGeometry(QtCore.QRect(150, 220, 121, 21))
         self.popular_lable.setObjectName("popular_lable")
-        self.strukture = QtWidgets.QPushButton(self.centralwidget)
-        self.strukture.setGeometry(QtCore.QRect(610, 100, 101, 28))
-        self.strukture.setObjectName("strukture")
         self.prise_value = QtWidgets.QPushButton(self.centralwidget)
         self.prise_value.setGeometry(QtCore.QRect(610, 140, 101, 28))
         self.prise_value.setObjectName("prise_value")
-        self.popular = QtWidgets.QLineEdit(self.centralwidget)
-        self.popular.setGeometry(QtCore.QRect(160, 260, 311, 151))
+        self.popular = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.popular.setGeometry(QtCore.QRect(170, 260, 311, 181))
         self.popular.setObjectName("popular")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 804, 26))
         self.menubar.setObjectName("menubar")
         self.menu_2 = QtWidgets.QMenu(self.menubar)
         self.menu_2.setObjectName("menu_2")
@@ -98,12 +94,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.plainTextEdit.setPlainText(_translate("MainWindow", "Фильтры\n"
-"Состав\n"
-"Озывы\n"
-"Цена\n"
-"Разделы\n"
-"Персонализация(из анкеты)"))
         self.pushButtonSearch.setText(_translate("MainWindow", "Искать продукты"))
         self.groupBox.setTitle(_translate("MainWindow", "Фильтры"))
         self.fastfood.setText(_translate("MainWindow", "Фастфуд"))
@@ -115,8 +105,7 @@ class Ui_MainWindow(object):
         self.labelnameN.setText(_translate("MainWindow", "Тут будут похожие"))
         self.similar_name.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.popular_lable.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Популярные</span></p></body></html>"))
-        self.strukture.setText(_translate("MainWindow", "Узнать состав"))
-        self.prise_value.setText(_translate("MainWindow", "Узнать цену"))
+        self.prise_value.setText(_translate("MainWindow", "Подробнее"))
         self.menu_2.setTitle(_translate("MainWindow", "Заказы"))
         self.menu_3.setTitle(_translate("MainWindow", "Корзина"))
         self.menu.setTitle(_translate("MainWindow", "Главная"))

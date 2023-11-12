@@ -5,7 +5,7 @@ from handler.db_handler import *
 class CheckThread(QtCore.QThread):
     mysignal = QtCore.pyqtSignal(str)
 
-    # thr - threshold threquiremen, порог требованияt
+    # thr - threshold threquiremen, порог требования
 
     def thr_login(self, name, passw):
         return login(name, passw, self.mysignal)
@@ -22,8 +22,11 @@ class CheckThread(QtCore.QThread):
     def thr_check_name(self, name):
         return check(name)
 
+    def thr_price(self, name):
+        return price(name)
+
     def thr_struck(self, name):
         return struck(name)
 
-    def thr_price(self, name):
-        return price(name)
+    def thr_popular(self):
+        return popular()

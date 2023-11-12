@@ -2,7 +2,6 @@ import sqlite3
 import difflib
 import hashlib
 import os
-import hashlib
 
 
 def login(login, passw, signal):
@@ -100,9 +99,70 @@ def check(name):
     return None
 
 
-def struck(name):
-    pass
-
-
 def price(name):
-    pass
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+
+    cur.execute(f"SELECT price_name FROM products WHERE name='{name}'")
+    price_name = cur.fetchall()
+
+    cur.execute(f"SELECT price_analogue FROM products WHERE name='{name}'")
+    price_analogue = cur.fetchall()
+
+    cur.execute(f"SELECT name FROM products WHERE name='{name}'")
+    name_name = cur.fetchall()
+
+    cur.execute(f"SELECT analogue FROM products WHERE name='{name}'")
+    name_analogue = cur.fetchall()
+
+    ans = "".join(*name_name) + ": " + "".join(*price_name) + "руб"
+    for i in name_analogue:
+        ans += "\n"
+        ans += "".join(i) + ": "
+        for j in price_analogue:
+            ans += "".join(j) + "руб"
+    return ans
+
+
+def struck(name):
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+
+    cur.execute(f"SELECT structure_name FROM products WHERE name='{name}'")
+    struck_name = cur.fetchall()
+
+    cur.execute(f"SELECT structure_analogue FROM products WHERE name='{name}'")
+    struck_analogue = cur.fetchall()
+
+    cur.execute(f"SELECT name FROM products WHERE name='{name}'")
+    name_name = cur.fetchall()
+
+    cur.execute(f"SELECT analogue FROM products WHERE name='{name}'")
+    name_analogue = cur.fetchall()
+
+    ans = "".join(*name_name) + ": " + "".join(*struck_name)
+    for i in name_analogue:
+        ans += "\n" * 2
+        ans += "".join(i) + ": "
+        for j in struck_analogue:
+            ans += "".join(j)
+    return ans
+
+
+def popular():
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+
+    cur.execute(f"SELECT name, analogue FROM products;")
+    value = cur.fetchall()
+    ans = ""
+    for i in value:
+        ans += i[0] + ": "
+        for j in i:
+            if j != i[0]:
+                ans += j + ", "
+        ans += "\n"
+        if i == 5:
+            break
+
+    return ans[:-3]
