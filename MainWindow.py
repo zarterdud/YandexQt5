@@ -2,6 +2,7 @@ import sys
 from PyQt5 import QtWidgets
 from ui_Mainwindow import *
 from check_db import *
+from add_projects import Adding
 
 
 class Window(QtWidgets.QMainWindow):
@@ -18,6 +19,10 @@ class Window(QtWidgets.QMainWindow):
 
         self.main_window.popular.setEnabled(False)
         self.main_window.popular.appendPlainText(self.check_db.thr_popular())
+
+        self.main_window.add.clicked.connect(self.add_sth)
+
+        self.add_objects = Adding()
 
     def search(self):
         name = self.main_window.search.text().lower()
@@ -49,29 +54,38 @@ class Window(QtWidgets.QMainWindow):
     def more_detalied(self):
         name = self.main_window.search.text().lower()
 
-        ans = self.check_db.thr_products(name)
-        ans2 = self.check_db.thr_analogue(name)
-
         mes = QtWidgets.QMessageBox()
         mes.setWindowTitle("Детали")
-        mes.setIcon(QtWidgets.QMessageBox.Information)
 
-        price = self.check_db.thr_price(name)
+        photo = self.check_db.thr_picture(name)
 
-        detalied = self.check_db.thr_struck(name)
-
-        if name != "":
+        if name != "" and self.check_db.thr_products(name) != "Введите корректно":
+            price = self.check_db.thr_price(name)
+            detalied = self.check_db.thr_struck(name)
             mes.setText(price)
             mes.setStandardButtons(QtWidgets.QMessageBox.Close)
             mes.setDetailedText(detalied)
-        else:
+            mes.setIcon(QtWidgets.QMessageBox.Information)
+            mes.setIconPixmap(QtGui.QPixmap(photo))
+        elif name == "":
             mes.setText("Введите значение")
+            mes.setIcon(QtWidgets.QMessageBox.Warning)
+            mes.setIconPixmap(QtGui.QPixmap('photos/error.png'))
+        else:
+            mes.setText("Введите корректное значение")
+            mes.setIcon(QtWidgets.QMessageBox.Warning)
+            mes.setIconPixmap(QtGui.QPixmap('photos/error.png'))
 
         mes.exec_()
+
+    def add_sth(self):
+        self.add_objects.setWindowTitle("Форма")
+        self.add_objects.show()
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     mywin = Window()
+    mywin.setWindowTitle('Главная страница')
     mywin.show()
     sys.exit(app.exec_())

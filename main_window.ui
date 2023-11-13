@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Seacher</class>
+ <widget class="QMainWindow" name="Seacher">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>522</height>
+    <width>645</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>804</width>
-    <height>522</height>
+    <width>500</width>
+    <height>450</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>551</width>
+      <width>401</width>
       <height>22</height>
      </rect>
     </property>
@@ -33,8 +33,8 @@
    <widget class="QPushButton" name="pushButtonSearch">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>20</y>
+      <x>440</x>
+      <y>16</y>
       <width>131</width>
       <height>28</height>
      </rect>
@@ -43,65 +43,10 @@
      <string>Искать продукты</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>120</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Фильтры</string>
-    </property>
-    <widget class="QCheckBox" name="fastfood">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Фастфуд</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="meat">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>101</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Мясо, птица</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="forchildren">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>91</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Для детей</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLabel" name="labelname">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>20</x>
       <y>140</y>
       <width>131</width>
       <height>31</height>
@@ -114,7 +59,7 @@
    <widget class="QLabel" name="name">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>20</x>
       <y>90</y>
       <width>101</width>
       <height>21</height>
@@ -124,23 +69,10 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Назавание&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="nameN">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>90</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Похожие&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelnameN">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>160</x>
       <y>130</y>
       <width>151</width>
       <height>51</height>
@@ -169,7 +101,7 @@
    <widget class="QLabel" name="popular_lable">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>20</x>
       <y>220</y>
       <width>121</width>
       <height>21</height>
@@ -182,8 +114,8 @@
    <widget class="QPushButton" name="prise_value">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>140</y>
+      <x>340</x>
+      <y>100</y>
       <width>101</width>
       <height>28</height>
      </rect>
@@ -195,11 +127,37 @@
    <widget class="QPlainTextEdit" name="popular">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>20</x>
       <y>260</y>
-      <width>311</width>
-      <height>181</height>
+      <width>261</width>
+      <height>151</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>260</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="name_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>90</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Похожие&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -208,30 +166,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>804</width>
+     <width>645</width>
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>Заказы</string>
-    </property>
-    <addaction name="action_4"/>
-    <addaction name="action_5"/>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>Корзина</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Главная</string>
-    </property>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
   </widget>
   <action name="action">
    <property name="text">
@@ -243,12 +181,12 @@
     <string>Каталог</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="recent_action">
    <property name="text">
     <string>Недавние</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="favorite_action">
    <property name="text">
     <string>Любимые</string>
    </property>

@@ -30,3 +30,26 @@ class CheckThread(QtCore.QThread):
 
     def thr_popular(self):
         return popular()
+
+    def thr_add_sth(
+        self,
+        name,
+        analogue,
+        price_name,
+        price_analogue,
+        structure_name,
+        structure_analogue,
+        picture,
+    ):
+        return add_sth(
+            name,
+            analogue,
+            price_name,
+            price_analogue,
+            structure_name,
+            structure_analogue,
+            picture,
+        )
+
+    def thr_picture(self, name):
+        return picture(name)

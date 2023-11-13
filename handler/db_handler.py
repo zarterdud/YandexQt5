@@ -9,22 +9,26 @@ def login(login, passw, signal):
     cur = con.cursor()
 
     salt = cur.execute(f'SELECT salt FROM users WHERE name="{login}";').fetchall()
-    password = cur.execute(
-        f'SELECT password FROM users WHERE name="{login}";'
-    ).fetchall()
-    new_key = hashlib.pbkdf2_hmac(
-        "sha1", passw.encode("utf-8"), bytes(salt[0][0], "utf-8"), 100000
-    ).hex()
+    if salt != []:
+        password = cur.execute(
+            f'SELECT password FROM users WHERE name="{login}";'
+        ).fetchall()
+        new_key = hashlib.pbkdf2_hmac(
+            "sha1", passw.encode("utf-8"), bytes(salt[0][0], "utf-8"), 100000
+        ).hex()
 
-    if new_key != [] and new_key == password[0][0]:
-        signal.emit("Успешная авторизация!")
-        cur.close()
-        con.close()
-        return True
+        if new_key != [] and new_key == password[0][0]:
+            signal.emit("Успешная авторизация!")
+            cur.close()
+            con.close()
+            return True
+        else:
+            signal.emit("Проверьте правильность ввода данных!")
+            cur.close()
+            con.close()
+            return False
     else:
         signal.emit("Проверьте правильность ввода данных!")
-        cur.close()
-        con.close()
         return False
 
 
@@ -94,7 +98,7 @@ def check(name):
             difflib.SequenceMatcher(None, name.lower(), "".join(*i).lower()).ratio()
             * 100
         )
-        if y > 75:
+        if y >= 75:
             return "".join(*i)
     return None
 
@@ -114,14 +118,16 @@ def price(name):
 
     cur.execute(f"SELECT analogue FROM products WHERE name='{name}'")
     name_analogue = cur.fetchall()
-
-    ans = "".join(*name_name) + ": " + "".join(*price_name) + "руб"
-    for i in name_analogue:
-        ans += "\n"
-        ans += "".join(i) + ": "
-        for j in price_analogue:
-            ans += "".join(j) + "руб"
-    return ans
+    if name != [] and name:
+        ans = "".join(*name_name) + ": " + "".join(*price_name) + "руб"
+        for i in name_analogue:
+            ans += "\n"
+            ans += "".join(i) + ": "
+            for j in price_analogue:
+                ans += "".join(j) + "руб"
+        return ans
+    else:
+        return "Введите коректное значение"
 
 
 def struck(name):
@@ -156,13 +162,53 @@ def popular():
     cur.execute(f"SELECT name, analogue FROM products;")
     value = cur.fetchall()
     ans = ""
+    rangee = 0
     for i in value:
+        rangee += 1
         ans += i[0] + ": "
         for j in i:
             if j != i[0]:
                 ans += j + ", "
         ans += "\n"
-        if i == 5:
+        if rangee == 5:
             break
 
     return ans[:-3]
+
+
+def add_sth(
+    name,
+    analogue,
+    price_name="",
+    price_analogue="",
+    structure_name="",
+    structure_analogue="",
+    picture="",
+):
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+
+    if name == "" and analogue == "":
+        return "Введите название и аналог"
+    elif name == "":
+        return "Введите название"
+    elif analogue == "":
+        return "Введите аналог"
+    else:
+        cur.execute(
+            f"INSERT INTO products (name, analogue, price_name, price_analogue, structure_name, structure_analogue, photo) VALUES ('{name}', '{analogue}', '{price_name}', '{price_analogue}', '{structure_name}', '{structure_analogue}', '{picture}');"
+        )
+        con.commit()
+
+
+def picture(name):
+    con = sqlite3.connect("handler/users.sqlite")
+    cur = con.cursor()
+    ans = cur.execute(f"SELECT photo FROM products WHERE name = '{name}';").fetchall()
+    if ans != []:
+        if ans[0][0] != None:
+            return "".join(*ans)
+        else:
+            return "photos/error.png"
+    else:
+        return "photos/error.png"

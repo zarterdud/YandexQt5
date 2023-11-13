@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 from check_db import *
 from ui_WinRegLog import *
 from MainWindow import Window
@@ -40,6 +40,7 @@ class RegLog(QtWidgets.QWidget):
         passw = self.ui.lineEdit_2.text()
 
         if self.check_db.thr_login(name, passw):
+            self.win.setWindowTitle("Главная страница")
             self.win.show()
             self.close()
 
@@ -56,5 +57,6 @@ class RegLog(QtWidgets.QWidget):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     mywin = RegLog()
+    mywin.setWindowTitle("Регистрация/Авторизация")
     mywin.show()
     sys.exit(app.exec_())
