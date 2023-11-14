@@ -18,7 +18,7 @@ gh repo clone zarterdud/YandexQt5
 2. Install dependencies
 
 ```python
-pip -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. Run the app
