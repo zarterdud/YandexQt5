@@ -162,7 +162,7 @@ def popular():
     cur.execute(f"SELECT name, analogue FROM products;")
     value = cur.fetchall()
     ans = ""
-    rangee = 0
+    rangee = 1
     for i in value:
         rangee += 1
         ans += i[0] + ": "

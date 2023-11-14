@@ -60,6 +60,14 @@ class Adding(QtWidgets.QMainWindow):
             self.message.setWindowTitle("Добавлено")
             self.message.setText("Изменения сохранены!")
             self.close()
+            name = ''
+            analogue = ''
+            price_name = ''
+            price_analogue = ''
+            structure_name = ''
+            structure_analogue = ''
+            self.ans = ''
+            photo = self.ans
 
     def add_photo(self):
         self.ans = QtWidgets.QFileDialog.getOpenFileName(self, "Выбрать картинку", "")[
